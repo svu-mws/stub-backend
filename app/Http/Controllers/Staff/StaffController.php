@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers\Staff;
 
-use App\Http\Controllers\AuthenticatedShowOnlyController;
+use App\Http\Controllers\Controller;
 use Czim\Repository\ExtendedRepository;
-use Barryvdh\Debugbar\Facade as DebugBar;
 use Illuminate\Http\Request;
 
-class StaffController extends AuthenticatedShowOnlyController
+class StaffController extends Controller
 {
 
     protected $staff;
 
     public function __construct(ExtendedRepository $staff)
     {
-        parent::__construct();
         $this->staff = $staff;
     }
-
 
     public function index()
     {
@@ -26,7 +23,6 @@ class StaffController extends AuthenticatedShowOnlyController
 
     public function show($id)
     {
-        DebugBar::info('test');
         return $this->staff->findOrFail($id);
     }
 

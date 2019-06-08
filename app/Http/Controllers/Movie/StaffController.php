@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers\Movie;
 
-use App\Http\Controllers\AuthenticatedShowOnlyController;
+use App\Http\Controllers\Controller;
 use Czim\Repository\ExtendedRepository;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Staff\StaffController as SingleController;
 
 
-class StaffController extends AuthenticatedShowOnlyController
+class StaffController extends Controller
 {
     protected $movies;
 
     public function __construct(ExtendedRepository $movies)
     {
-        parent::__construct();
         $this->movies = $movies;
     }
 
@@ -39,7 +39,7 @@ class StaffController extends AuthenticatedShowOnlyController
 
     public function show($movieId, $staffId)
     {
-        return $this->findMovie($movieId)->staff()->findOrFail($staffId);
+        return app(SingleController::class)->show($staffId);
     }
 
     public function store(Request $request, $movieId)

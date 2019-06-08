@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Movie;
 
-use App\Http\Controllers\AuthenticatedShowOnlyController;
+use App\Http\Controllers\Controller;
 use Czim\Repository\ExtendedRepository;
 use Illuminate\Http\Request;
 
-class MovieController extends AuthenticatedShowOnlyController
+class MovieController extends Controller
 {
     protected $movies;
 
     public function __construct(ExtendedRepository $movies)
     {
-        parent::__construct();
         $this->movies = $movies;
     }
 

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Staff;
 
-use App\Http\Controllers\AuthenticatedShowOnlyController;
+use App\Http\Controllers\Controller;
 use Czim\Repository\ExtendedRepository;
 use Illuminate\Http\Request;
+use App\Http\Controllers\JobRoleController as SingleController;
 
-class JobRoleController extends AuthenticatedShowOnlyController
+class JobRoleController extends Controller
 {
 
     protected $staff;
@@ -29,7 +30,7 @@ class JobRoleController extends AuthenticatedShowOnlyController
 
     public function show($staffId, $jobRoleId)
     {
-        return $this->findStaff($staffId)->jobRoles()->findOrFail($jobRoleId);
+        return app(SingleController::class)->show($jobRoleId);
     }
 
     public function destroy($staffId, $jobRoleId)

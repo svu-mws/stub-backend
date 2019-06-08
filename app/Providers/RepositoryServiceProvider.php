@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\Genre;
 use App\Http\Controllers\JobRoleController;
 use App\Http\Controllers\Movie;
 use App\Http\Controllers\Staff;
 use App\Http\Controllers\UserController;
+use App\Repositories\GenreRepository;
 use App\Repositories\JobRoleRepository;
 use App\Repositories\MovieRepository;
 use App\Repositories\StaffRepository;
@@ -41,7 +43,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app
             ->when([
                     Movie\MovieController::class,
-                    Movie\StaffController::class
+                    Movie\StaffController::class,
+                    Movie\GenreController::class
                 ]
             )
             ->needs(ExtendedRepository::class)
@@ -51,6 +54,15 @@ class RepositoryServiceProvider extends ServiceProvider
             ->when(UserController::class)
             ->needs(ExtendedRepository::class)
             ->give(UserRepository::class);
+
+        $this->app
+            ->when([
+                    Genre\GenreController::class,
+                    Genre\MovieController::class
+                ]
+            )
+            ->needs(ExtendedRepository::class)
+            ->give(GenreRepository::class);
     }
 
     /**

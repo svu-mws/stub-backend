@@ -15,4 +15,5 @@ Route::namespace('Movie')->group(static function () {
     Route::apiResource('movies.staff', 'StaffController', ['except' => ['update']]);
 });
 
+Route::apiResource('genres', 'GenresController');
 Route::apiResource('job_roles', 'JobRoleController');

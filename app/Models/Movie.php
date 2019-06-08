@@ -38,4 +38,9 @@ class Movie extends Model
     {
         return $this->belongsToMany(JobRole::class, 'job_role_movie_staff');
     }
+
+    public function genres()
+    {
+        return $this->belongsToMany(Genre::class);
+    }
 }

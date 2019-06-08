@@ -6,13 +6,12 @@ namespace App\Http\Controllers;
 use Czim\Repository\ExtendedRepository;
 use Illuminate\Http\Request;
 
-class UserController extends AuthenticatedShowOnlyController
+class UserController extends Controller
 {
     protected $users;
 
     public function __construct(ExtendedRepository $users)
     {
-        parent::__construct();
         $this->users = $users;
     }
 

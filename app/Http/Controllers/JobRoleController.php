@@ -5,13 +5,12 @@ namespace App\Http\Controllers;
 use Czim\Repository\ExtendedRepository;
 use Illuminate\Http\Request;
 
-class JobRoleController extends AuthenticatedShowOnlyController
+class JobRoleController extends Controller
 {
     protected $jobRoles;
 
     public function __construct(ExtendedRepository $jobRoles)
     {
-        parent::__construct();
         $this->jobRoles = $jobRoles;
     }
 
