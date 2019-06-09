@@ -14,7 +14,6 @@ class Person extends Model
 
     protected $dateFormat = 'dd/mm/yyyy';
 
-
     protected $presenter = PersonPresenter::class;
 
     protected static $imageFields = [

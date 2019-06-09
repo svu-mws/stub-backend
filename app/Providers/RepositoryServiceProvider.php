@@ -35,10 +35,6 @@ class RepositoryServiceProvider extends ServiceProvider
             )
             ->needs(ExtendedRepository::class)
             ->give(StaffRepository::class);
-        $this->app
-            ->when(JobRoleController::class)
-            ->needs(ExtendedRepository::class)
-            ->give(JobRoleRepository::class);
 
         $this->app
             ->when([
@@ -51,11 +47,6 @@ class RepositoryServiceProvider extends ServiceProvider
             ->give(MovieRepository::class);
 
         $this->app
-            ->when(UserController::class)
-            ->needs(ExtendedRepository::class)
-            ->give(UserRepository::class);
-
-        $this->app
             ->when([
                     Genre\GenreController::class,
                     Genre\MovieController::class
@@ -63,6 +54,16 @@ class RepositoryServiceProvider extends ServiceProvider
             )
             ->needs(ExtendedRepository::class)
             ->give(GenreRepository::class);
+
+        $this->app
+            ->when(JobRoleController::class)
+            ->needs(ExtendedRepository::class)
+            ->give(JobRoleRepository::class);
+
+        $this->app
+            ->when(UserController::class)
+            ->needs(ExtendedRepository::class)
+            ->give(UserRepository::class);
     }
 
     /**

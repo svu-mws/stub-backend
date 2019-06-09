@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\JobRole;
 
+use App\Http\Controllers\Controller;
 use Czim\Repository\ExtendedRepository;
 use Illuminate\Http\Request;
 

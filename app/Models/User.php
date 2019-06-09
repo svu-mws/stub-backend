@@ -2,16 +2,20 @@
 
 namespace App\Models;
 
+use App\Presenters\UserPresenter;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use Laracasts\Presenter\PresentableTrait;
 use Spatie\Permission\Traits\HasRoles;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Person implements JWTSubject, AuthenticatableContract, AuthorizableContract
 {
-    use Authenticatable, Authorizable, HasRoles;
+    use Authenticatable, Authorizable, HasRoles, PresentableTrait;
+
+    protected $presenter = UserPresenter::class;
 
     protected $hidden = [
         'password'
